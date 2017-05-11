@@ -1,5 +1,5 @@
 --
--- Contraintes pour les tables exportées
+-- Contraintes pour les tables exportï¿½es
 --
 
 --
@@ -103,7 +103,3 @@ ALTER TABLE `possede`
 ALTER TABLE `suivre`
   ADD CONSTRAINT `FK_suivre_id_groupe` FOREIGN KEY (`id_groupe`) REFERENCES `groupe` (`id_groupe`),
   ADD CONSTRAINT `FK_suivre_id_matiere` FOREIGN KEY (`id_matiere`) REFERENCES `matiere` (`id_matiere`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
