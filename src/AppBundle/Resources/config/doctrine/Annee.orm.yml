@@ -1,0 +1,25 @@
+AppBundle\Entity\Annee:
+    type: entity
+    table: annee
+    repositoryClass: AppBundle\Repository\AnneeRepository
+    id:
+        idAnnee:
+            type: integer
+            id: true
+            column: id_annee
+            generator:
+                strategy: AUTO
+    fields:
+        dateDebut:
+            type: date
+            nullable: true
+            column: date_debut
+        dateFin:
+            type: date
+            nullable: true
+            column: date_fin
+        intitule:
+            type: string
+            length: 50
+            nullable: true
+    lifecycleCallbacks: {  }
