@@ -238,10 +238,10 @@ INSERT INTO `auto_evaluer` (`id`, `date_autoEval`, `note_autoEval`, `id_competen
 (147, '2016-09-29 13:05:36', 4, 9, 27, '');
 
 --
--- Vider la table avant d'insérer `commantaire_competence`
+-- Vider la table avant d'insérer `commentaire_competence`
 --
 
--- TRUNCATE TABLE `commantaire_competence`;
+-- TRUNCATE TABLE `commentaire_competence`;
 --
 -- Vider la table avant d'insérer `competence`
 --
