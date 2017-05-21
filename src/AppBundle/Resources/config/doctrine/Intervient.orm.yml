@@ -1,0 +1,21 @@
+AppBundle\Entity\Intervient:
+    type: entity
+    table: intervient
+    repositoryClass: AppBundle\Repository\IntervientRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        idIntervenant:
+            type: integer
+            column: id_intervenant
+        idMatiere:
+            type: integer
+            column: id_matiere
+        usersId:
+            type: integer
+            column: users_id
+    lifecycleCallbacks: {  }
