@@ -1,0 +1,58 @@
+AppBundle\Entity\Users:
+    type: entity
+    table: users
+    repositoryClass: AppBundle\Repository\UsersRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        role:
+            type: string
+            length: '25'
+        email:
+            type: string
+            length: 255
+        password:
+            type: string
+            length: '60'
+            nullable: true
+        rememberToken:
+            type: string
+            length: '100'
+            nullable: true
+            column: remember_token
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+        nom:
+            type: string
+            length: '50'
+        prenom:
+            type: string
+            length: '50'
+        adresse:
+            type: string
+            length: '100'
+        cp:
+            type: string
+            length: '100'
+        ville:
+            type: string
+            length: '100'
+        telephone:
+            type: string
+            length: '20'
+        dob:
+            type: datetimetz
+    lifecycleCallbacks: {  }

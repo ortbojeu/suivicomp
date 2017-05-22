@@ -1,0 +1,21 @@
+AppBundle\Entity\GroupeCompetence:
+    type: entity
+    table: groupe_competence
+    repositoryClass: AppBundle\Repository\GroupeCompetenceRepository
+    id:
+        id_groupeCompetence:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nomGroupe:
+            type: string
+            length: '150'
+            nullable: true
+            column: nom_groupe
+        idMatiere:
+            type: integer
+            nullable: true
+            column: id_matiere
+    lifecycleCallbacks: {  }

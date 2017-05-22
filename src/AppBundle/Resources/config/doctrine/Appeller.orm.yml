@@ -1,0 +1,18 @@
+AppBundle\Entity\Appeller:
+    type: entity
+    table: appeller
+    repositoryClass: AppBundle\Repository\AppellerRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        idContact:
+            type: integer
+            column: id_contact
+        usersId:
+            type: integer
+            column: users_id
+    lifecycleCallbacks: {  }

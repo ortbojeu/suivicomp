@@ -1,0 +1,17 @@
+AppBundle\Entity\Matiere:
+    type: entity
+    table: matiere
+    repositoryClass: AppBundle\Repository\MatiereRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nomMatiere:
+            type: string
+            length: '25'
+            nullable: true
+            column: nom_matiere
+    lifecycleCallbacks: {  }

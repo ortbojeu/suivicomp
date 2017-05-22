@@ -1,0 +1,21 @@
+AppBundle\Entity\Annee:
+    type: entity
+    table: annee
+    repositoryClass: AppBundle\Repository\AnneeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        dateDebut:
+            type: datetimetz
+            column: date_debut
+        dateFin:
+            type: datetimetz
+            column: date_fin
+        intitule:
+            type: string
+            length: '50'
+    lifecycleCallbacks: {  }

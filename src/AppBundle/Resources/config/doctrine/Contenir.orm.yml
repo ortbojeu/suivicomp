@@ -1,0 +1,18 @@
+AppBundle\Entity\Contenir:
+    type: entity
+    table: contenir
+    repositoryClass: AppBundle\Repository\ContenirRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        idEpreuve:
+            type: integer
+            column: id_epreuve
+        idCompetence:
+            type: integer
+            column: id_competence
+    lifecycleCallbacks: {  }

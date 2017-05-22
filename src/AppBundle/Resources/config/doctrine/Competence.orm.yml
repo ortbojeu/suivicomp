@@ -1,0 +1,21 @@
+AppBundle\Entity\Competence:
+    type: entity
+    table: competence
+    repositoryClass: AppBundle\Repository\CompetenceRepository
+    id:
+        id_competence:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nomCompetence:
+            type: string
+            length: '100'
+            nullable: true
+            column: nom_competence
+        idGroupeCompetence:
+            type: integer
+            nullable: true
+            column: id_groupeCompetence
+    lifecycleCallbacks: {  }

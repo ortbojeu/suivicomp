@@ -1,0 +1,50 @@
+AppBundle\Entity\Contact:
+    type: entity
+    table: contact
+    repositoryClass: AppBundle\Repository\ContactRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nomContact:
+            type: string
+            length: '25'
+            nullable: true
+            column: nom_contact
+        prenomContact:
+            type: string
+            length: '25'
+            nullable: true
+            column: prenom_contact
+        adreseContact:
+            type: string
+            length: '100'
+            nullable: true
+            column: adrese_contact
+        cPContact:
+            type: string
+            length: '6'
+            nullable: true
+            column: CP_contact
+        villeContact:
+            type: string
+            length: '25'
+            nullable: true
+            column: ville_contact
+        telFixeContact:
+            type: string
+            length: '10'
+            nullable: true
+            column: telFixe_contact
+        telMobileContact:
+            type: string
+            length: '10'
+            nullable: true
+            column: telMobile_contact
+        idContact:
+            type: integer
+            column: id_contact
+    lifecycleCallbacks: {  }

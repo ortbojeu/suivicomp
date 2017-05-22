@@ -1,0 +1,29 @@
+AppBundle\Entity\EvaluerSimplement:
+    type: entity
+    table: evaluer_simplement
+    repositoryClass: AppBundle\Repository\EvaluerSimplementRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        noteEvaluerSimplement:
+            type: integer
+            nullable: true
+            column: note_evaluerSimplement
+        dateEvaluerSimplement:
+            type: datetimetz
+            nullable: true
+            column: date_evaluerSimplement
+        idCompetence:
+            type: integer
+            column: id_competence
+        usersIdProf:
+            type: integer
+            column: users_id_prof
+        usersIdEleve:
+            type: integer
+            column: users_id_eleve
+    lifecycleCallbacks: {  }

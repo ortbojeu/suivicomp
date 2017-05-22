@@ -1,0 +1,22 @@
+AppBundle\Entity\Appartenir:
+    type: entity
+    table: appartenir
+    repositoryClass: AppBundle\Repository\AppartenirRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        dateChangement:
+            type: datetimetz
+            nullable: true
+            column: date_changement
+        idGroupe:
+            type: integer
+            column: id_groupe
+        usersId:
+            type: integer
+            column: users_id
+    lifecycleCallbacks: {  }

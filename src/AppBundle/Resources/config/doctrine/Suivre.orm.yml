@@ -1,0 +1,18 @@
+AppBundle\Entity\Suivre:
+    type: entity
+    table: suivre
+    repositoryClass: AppBundle\Repository\SuivreRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        idGroupe:
+            type: integer
+            column: id_groupe
+        idMatiere:
+            type: integer
+            column: id_matiere
+    lifecycleCallbacks: {  }

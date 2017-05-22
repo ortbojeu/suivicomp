@@ -1,0 +1,25 @@
+AppBundle\Entity\Groupe:
+    type: entity
+    table: groupe
+    repositoryClass: AppBundle\Repository\GroupeRepository
+    id:
+        id_groupe:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nomGroupe:
+            type: string
+            length: '25'
+            nullable: true
+            column: nom_groupe
+        idAnnee:
+            type: integer
+            nullable: true
+            column: id_annee
+        idDiplome:
+            type: integer
+            nullable: true
+            column: id_diplome
+    lifecycleCallbacks: {  }

@@ -1,0 +1,27 @@
+AppBundle\Entity\Possede:
+    type: entity
+    table: possedde
+    repositoryClass: AppBundle\Repository\PossedeRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        mention:
+            type: string
+            length: '25'
+            nullable: true
+        dateObtention:
+            type: string
+            length: '25'
+            nullable: true
+            column: date_obtention
+        idDiplome:
+            type: integer
+            column: id_diplome
+        usersId:
+            type: integer
+            column: users_id
+    lifecycleCallbacks: {  }

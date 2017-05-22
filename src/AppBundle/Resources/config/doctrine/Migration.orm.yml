@@ -1,0 +1,17 @@
+AppBundle\Entity\Migration:
+    type: entity
+    table: migration
+    repositoryClass: AppBundle\Repository\MigrationRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        migration:
+            type: string
+            length: 255
+        batch:
+            type: integer
+    lifecycleCallbacks: {  }
