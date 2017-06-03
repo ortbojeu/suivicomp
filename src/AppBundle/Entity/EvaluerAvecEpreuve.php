@@ -25,7 +25,7 @@ class EvaluerAvecEpreuve
     /**
      * @var int
      */
-    private $idComptetence;
+    private $idCompetence;
 
     /**
      * @var int
@@ -97,27 +97,27 @@ class EvaluerAvecEpreuve
     }
 
     /**
-     * Set idComptetence
+     * Set idCompetence
      *
-     * @param integer $idComptetence
+     * @param integer $idCompetence
      *
      * @return EvaluerAvecEpreuve
      */
-    public function setIdComptetence($idComptetence)
+    public function setIdCompetence($idCompetence)
     {
-        $this->idComptetence = $idComptetence;
+        $this->idComptetence = $idCompetence;
     
         return $this;
     }
 
     /**
-     * Get idComptetence
+     * Get idCompetence
      *
      * @return integer
      */
-    public function getIdComptetence()
+    public function getIdCompetence()
     {
-        return $this->idComptetence;
+        return $this->idCompetence;
     }
 
     /**

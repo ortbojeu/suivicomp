@@ -16,9 +16,9 @@ AppBundle\Entity\EvaluerAvecEpreuve:
         note:
             type: integer
             nullable: true
-        idComptetence:
+        idCompetence:
             type: integer
-            column: id_comptetence
+            column: id_competence
         idEpreuve:
             type: integer
             column: id_epreuve
