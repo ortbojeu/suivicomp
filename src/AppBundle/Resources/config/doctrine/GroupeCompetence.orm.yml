@@ -3,9 +3,10 @@ AppBundle\Entity\GroupeCompetence:
     table: groupe_competence
     repositoryClass: AppBundle\Repository\GroupeCompetenceRepository
     id:
-        id_groupeCompetence:
+        idGroupeCompetence:
             type: integer
             id: true
+            column: id_groupeCompetence
             generator:
                 strategy: AUTO
     fields:

@@ -6,16 +6,16 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+class EleveController extends Controller
 {
-    /**
-     * définir les routes dans app/config/routing.yml
-     */
     public function indexAction(Request $request)
     {
+        $session = $request->getSession();
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig', [
+        return $this->render('accueilEleve.html.twig', [
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
+            'nom' => $session->get('nom'),
+            'prenom' => $session->get('prenom'),
         ]);
     }
 }

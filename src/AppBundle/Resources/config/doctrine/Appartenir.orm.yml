@@ -10,7 +10,7 @@ AppBundle\Entity\Appartenir:
                 strategy: AUTO
     fields:
         dateChangement:
-            type: datetimetz
+            type: date
             nullable: true
             column: date_changement
         idGroupe:

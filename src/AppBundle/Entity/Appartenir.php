@@ -13,7 +13,7 @@ class Appartenir
     private $id;
 
     /**
-     * @var \DateTime
+     * @var \Date
      */
     private $dateChangement;
 
@@ -41,21 +41,21 @@ class Appartenir
     /**
      * Set dateChangement
      *
-     * @param \DateTime $dateChangement
+     * @param \Date $dateChangement
      *
      * @return Appartenir
      */
     public function setDateChangement($dateChangement)
     {
         $this->dateChangement = $dateChangement;
-    
+
         return $this;
     }
 
     /**
      * Get dateChangement
      *
-     * @return \DateTime
+     * @return \Date
      */
     public function getDateChangement()
     {
@@ -72,7 +72,7 @@ class Appartenir
     public function setIdGroupe($idGroupe)
     {
         $this->idGroupe = $idGroupe;
-    
+
         return $this;
     }
 
@@ -96,7 +96,7 @@ class Appartenir
     public function setUsersId($usersId)
     {
         $this->usersId = $usersId;
-    
+
         return $this;
     }
 
@@ -110,4 +110,3 @@ class Appartenir
         return $this->usersId;
     }
 }
-

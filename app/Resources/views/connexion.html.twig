@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+  <main>
+    <h2>{{ errorCnx }}</h2>
+    <h1>Connexion</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+  </main>
+{% endblock %}

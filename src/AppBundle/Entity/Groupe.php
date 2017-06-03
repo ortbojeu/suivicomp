@@ -7,10 +7,11 @@ namespace AppBundle\Entity;
  */
 class Groupe
 {
+
     /**
      * @var int
      */
-    private $id;
+    private $idGroupe;
 
     /**
      * @var string
@@ -29,13 +30,27 @@ class Groupe
 
 
     /**
-     * Get id
+     * Set idGroupe
+     *
+     * @param integer $idGroupe
+     *
+     * @return Groupe
+     */
+    public function setIdGroupe($idGroupe)
+    {
+        $this->idGroupe = $idGroupe;
+
+        return $this;
+    }
+
+    /**
+     * Get idGroupe
      *
      * @return integer
      */
-    public function getId()
+    public function getIdGroupe()
     {
-        return $this->id;
+        return $this->idGroupe;
     }
 
     /**
@@ -48,7 +63,7 @@ class Groupe
     public function setNomGroupe($nomGroupe)
     {
         $this->nomGroupe = $nomGroupe;
-    
+
         return $this;
     }
 
@@ -72,7 +87,7 @@ class Groupe
     public function setIdAnnee($idAnnee)
     {
         $this->idAnnee = $idAnnee;
-    
+
         return $this;
     }
 
@@ -96,7 +111,7 @@ class Groupe
     public function setIdDiplome($idDiplome)
     {
         $this->idDiplome = $idDiplome;
-    
+
         return $this;
     }
 
@@ -110,4 +125,3 @@ class Groupe
         return $this->idDiplome;
     }
 }
-

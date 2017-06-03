@@ -10,7 +10,7 @@ class GroupeCompetence
     /**
      * @var int
      */
-    private $id;
+    private $idGroupeCompetence;
 
     /**
      * @var string
@@ -24,13 +24,27 @@ class GroupeCompetence
 
 
     /**
-     * Get id
+     * Set idGroupeCompetence
+     *
+     * @param integer $idGroupeCompetence
+     *
+     * @return GroupeCompetence
+     */
+    public function setIdGroupeCompetence($idGroupeCompetence)
+    {
+        $this->idGroupeCompetence = $idGroupeCompetence;
+
+        return $this;
+    }
+
+    /**
+     * Get idGroupeCompetence
      *
      * @return integer
      */
-    public function getId()
+    public function getIdGroupeCompetence()
     {
-        return $this->id;
+        return $this->idGroupeCompetence;
     }
 
     /**
@@ -43,7 +57,7 @@ class GroupeCompetence
     public function setNomGroupe($nomGroupe)
     {
         $this->nomGroupe = $nomGroupe;
-    
+
         return $this;
     }
 
@@ -67,7 +81,7 @@ class GroupeCompetence
     public function setIdMatiere($idMatiere)
     {
         $this->idMatiere = $idMatiere;
-    
+
         return $this;
     }
 
@@ -81,4 +95,3 @@ class GroupeCompetence
         return $this->idMatiere;
     }
 }
-

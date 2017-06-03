@@ -105,7 +105,7 @@ class EvaluerAvecEpreuve
      */
     public function setIdCompetence($idCompetence)
     {
-        $this->idCompetence = $idCompetence;
+        $this->idComptetence = $idCompetence;
     
         return $this;
     }

@@ -28,25 +28,28 @@ AppBundle\Entity\Users:
             nullable: true
             column: remember_token
         createdAt:
-            type: datetime
+            type: datetimetz
             nullable: true
             column: created_at
         updatedAt:
-            type: datetime
+            type: datetimetz
             nullable: true
             column: updated_at
         nom:
             type: string
             length: '50'
+            nullable: true
         prenom:
             type: string
             length: '50'
+            nullable: true
         adresse:
             type: string
             length: '100'
-        cp:
+        cP:
             type: string
             length: '100'
+            column: cp
         ville:
             type: string
             length: '100'
@@ -54,5 +57,5 @@ AppBundle\Entity\Users:
             type: string
             length: '20'
         dob:
-            type: datetimetz
+            type: date
     lifecycleCallbacks: {  }

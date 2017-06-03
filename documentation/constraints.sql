@@ -24,10 +24,10 @@ ALTER TABLE `auto_evaluer`
   ADD CONSTRAINT `fk_auto_evaluer_users1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
--- Contraintes pour la table `commantaire_competence`
+-- Contraintes pour la table `commentaire_competence`
 --
-ALTER TABLE `commantaire_competence`
-  ADD CONSTRAINT `FK_commantaire_competence_id_competence` FOREIGN KEY (`id_competence`) REFERENCES `competence` (`id_competence`);
+ALTER TABLE `commentaire_competence`
+  ADD CONSTRAINT `FK_commentaire_competence_id_competence` FOREIGN KEY (`id_competence`) REFERENCES `competence` (`id_competence`);
 
 --
 -- Contraintes pour la table `competence`

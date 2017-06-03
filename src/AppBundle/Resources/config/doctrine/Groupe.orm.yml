@@ -3,9 +3,10 @@ AppBundle\Entity\Groupe:
     table: groupe
     repositoryClass: AppBundle\Repository\GroupeRepository
     id:
-        id_groupe:
+        idGroupe:
             type: integer
             id: true
+            column: id_groupe
             generator:
                 strategy: AUTO
     fields:

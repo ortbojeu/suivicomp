@@ -65,7 +65,7 @@ class Users
     /**
      * @var string
      */
-    private $cp;
+    private $cP;
 
     /**
      * @var string
@@ -78,7 +78,7 @@ class Users
     private $telephone;
 
     /**
-     * @var \DateTime
+     * @var \Date
      */
     private $dob;
 
@@ -103,7 +103,7 @@ class Users
     public function setName($name)
     {
         $this->name = $name;
-    
+
         return $this;
     }
 
@@ -127,7 +127,7 @@ class Users
     public function setRole($role)
     {
         $this->role = $role;
-    
+
         return $this;
     }
 
@@ -151,7 +151,7 @@ class Users
     public function setEmail($email)
     {
         $this->email = $email;
-    
+
         return $this;
     }
 
@@ -175,7 +175,7 @@ class Users
     public function setPassword($password)
     {
         $this->password = $password;
-    
+
         return $this;
     }
 
@@ -199,7 +199,7 @@ class Users
     public function setRememberToken($rememberToken)
     {
         $this->rememberToken = $rememberToken;
-    
+
         return $this;
     }
 
@@ -223,7 +223,7 @@ class Users
     public function setCreatedAt($createdAt)
     {
         $this->createdAt = $createdAt;
-    
+
         return $this;
     }
 
@@ -247,7 +247,7 @@ class Users
     public function setUpdatedAt($updatedAt)
     {
         $this->updatedAt = $updatedAt;
-    
+
         return $this;
     }
 
@@ -271,7 +271,7 @@ class Users
     public function setNom($nom)
     {
         $this->nom = $nom;
-    
+
         return $this;
     }
 
@@ -295,7 +295,7 @@ class Users
     public function setPrenom($prenom)
     {
         $this->prenom = $prenom;
-    
+
         return $this;
     }
 
@@ -319,7 +319,7 @@ class Users
     public function setAdresse($adresse)
     {
         $this->adresse = $adresse;
-    
+
         return $this;
     }
 
@@ -334,27 +334,27 @@ class Users
     }
 
     /**
-     * Set cp
+     * Set cP
      *
-     * @param string $cp
+     * @param string $cP
      *
      * @return Users
      */
-    public function setCp($cp)
+    public function setCP($cP)
     {
-        $this->cp = $cp;
-    
+        $this->cP = $cP;
+
         return $this;
     }
 
     /**
-     * Get cp
+     * Get cP
      *
      * @return string
      */
-    public function getCp()
+    public function getCP()
     {
-        return $this->cp;
+        return $this->cP;
     }
 
     /**
@@ -367,7 +367,7 @@ class Users
     public function setVille($ville)
     {
         $this->ville = $ville;
-    
+
         return $this;
     }
 
@@ -391,7 +391,7 @@ class Users
     public function setTelephone($telephone)
     {
         $this->telephone = $telephone;
-    
+
         return $this;
     }
 
@@ -408,25 +408,52 @@ class Users
     /**
      * Set dob
      *
-     * @param \DateTime $dob
+     * @param \Date $dob
      *
      * @return Users
      */
     public function setDob($dob)
     {
         $this->dob = $dob;
-    
+
         return $this;
     }
 
     /**
      * Get dob
      *
-     * @return \DateTime
+     * @return \Date
      */
     public function getDob()
     {
         return $this->dob;
     }
-}
 
+    // public function toString() {
+    //   $str = "User - [ ";
+    //   $str .= "id : " . (($this->getId() != null) ? $this->getId() : "");
+    //   $str .= ", name : " . (($this->getName() != null) ? $this->getName() : "");
+    //   $str .= ", role : " . (($this->getRole() != null) ? $this->getRole() : "");
+    //   $str .= ", email : " . (($this->getEmail() != null) ? $this->getEmail() : "");
+    //   $str .= ", password : " . (($this->getPassword() != null) ? $this->getPassword() : "");
+    //   $str .= ", rememberToken : " . (($this->getRememberToken() != null) ? $this->getRememberToken() : "");
+    //   $str .= ", createdAt : " . (($this->getCreatedAt() != null) ? $this->getCreatedAt() : "");
+    //   $str .= ", updatedAt : " . (($this->getUpdatedAt() != null) ? $this->getUpdatedAt() : "");
+    //   $str .= ", nom : " . (($this->getNom() != null) ? $this->getNom() : "");
+    //   $str .= ", prenom : " . (($this->getPrenom() != null) ? $this->getPrenom() : "");
+    //   $str .= ", adresse : " . (($this->getAdresse() != null) ? $this->getAdresse() : "");
+    //   $str .= ", CP : " . (($this->getCP() != null) ? $this->getCP() : "");
+    //   $str .= ", ville : " . (($this->getVille() != null) ? $this->getVille() : "");
+    //   $str .= ", telephone : " . (($this->getTelephone() != null) ? $this->getTelephone() : "");
+    //   $str .= ", dob : " . (($this->getDob() != null) ? $this->getDob() : "");
+    //   $str .= " ]";
+    //   return $str;
+    // }
+    //
+    // public function checkUsers(Users $users) {
+    //   $usersPwd = $users->getPassword();
+    //   $usersEmail = $users->getEmail();
+    //   $testExists = ($this->getEmail() == $usersEmail && $this->getPassword() == $usersPwd);
+    //   return $testExists;
+    // }
+}

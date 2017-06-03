@@ -3,9 +3,10 @@ AppBundle\Entity\Matiere:
     table: matiere
     repositoryClass: AppBundle\Repository\MatiereRepository
     id:
-        id:
+        idMatiere:
             type: integer
             id: true
+            column: id_matiere
             generator:
                 strategy: AUTO
     fields:

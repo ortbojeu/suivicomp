@@ -6,6 +6,7 @@ AppBundle\Entity\Appeller:
         id:
             type: integer
             id: true
+            column: id
             generator:
                 strategy: AUTO
     fields:

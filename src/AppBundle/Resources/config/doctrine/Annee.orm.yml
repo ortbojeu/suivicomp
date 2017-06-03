@@ -3,19 +3,23 @@ AppBundle\Entity\Annee:
     table: annee
     repositoryClass: AppBundle\Repository\AnneeRepository
     id:
-        id:
+        idAnnee:
             type: integer
             id: true
+            column: id_annee
             generator:
                 strategy: AUTO
     fields:
         dateDebut:
-            type: datetimetz
+            type: date
+            nullable: true
             column: date_debut
         dateFin:
-            type: datetimetz
+            type: date
+            nullable: true
             column: date_fin
         intitule:
             type: string
-            length: '50'
+            length: 50
+            nullable: true
     lifecycleCallbacks: {  }

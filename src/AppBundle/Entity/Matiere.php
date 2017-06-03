@@ -7,10 +7,11 @@ namespace AppBundle\Entity;
  */
 class Matiere
 {
+
     /**
      * @var int
      */
-    private $id;
+    private $idMatiere;
 
     /**
      * @var string
@@ -19,13 +20,27 @@ class Matiere
 
 
     /**
-     * Get id
+     * Set idMatiere
+     *
+     * @param integer $idMatiere
+     *
+     * @return Matiere
+     */
+    public function setIdMatiere($idMatiere)
+    {
+        $this->idMatiere = $idMatiere;
+
+        return $this;
+    }
+
+    /**
+     * Get idMatiere
      *
      * @return integer
      */
-    public function getId()
+    public function getIdMatiere()
     {
-        return $this->id;
+        return $this->idMatiere;
     }
 
     /**
@@ -38,7 +53,7 @@ class Matiere
     public function setNomMatiere($nomMatiere)
     {
         $this->nomMatiere = $nomMatiere;
-    
+
         return $this;
     }
 
@@ -52,4 +67,3 @@ class Matiere
         return $this->nomMatiere;
     }
 }
-

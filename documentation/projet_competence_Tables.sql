@@ -90,16 +90,16 @@ CREATE TABLE IF NOT EXISTS `auto_evaluer` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `commantaire_competence`
+-- Structure de la table `commentaire_competence`
 --
 
-DROP TABLE IF EXISTS `commantaire_competence`;
-CREATE TABLE IF NOT EXISTS `commantaire_competence` (
+DROP TABLE IF EXISTS `commentaire_competence`;
+CREATE TABLE IF NOT EXISTS `commentaire_competence` (
   `commentaire` text,
   `id_commentaireCompetence` int(11) NOT NULL AUTO_INCREMENT,
   `id_competence` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_commentaireCompetence`),
-  KEY `FK_commantaire_competence_id_competence` (`id_competence`)
+  KEY `FK_commentaire_competence_id_competence` (`id_competence`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -387,5 +387,3 @@ CREATE TABLE IF NOT EXISTS `users` (
   `dob` date NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
-
-ALTER TABLE users CHANGE created_at created_at DATETIME DEFAULT NULL, CHANGE updated_at updated_at DATETIME DEFAULT NULL;

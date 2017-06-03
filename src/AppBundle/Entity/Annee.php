@@ -7,18 +7,19 @@ namespace AppBundle\Entity;
  */
 class Annee
 {
+
     /**
      * @var int
      */
-    private $id;
+    private $idAnnee;
 
     /**
-     * @var \DateTime
+     * @var \Date
      */
     private $dateDebut;
 
     /**
-     * @var \DateTime
+     * @var \Date
      */
     private $dateFin;
 
@@ -29,33 +30,47 @@ class Annee
 
 
     /**
-     * Get id
+     * Set idAnnee
+     *
+     * @param integer $idAnnee
+     *
+     * @return Annee
+     */
+    public function setIdAnnee($idAnnee)
+    {
+        $this->idAnnee = $idAnnee;
+
+        return $this;
+    }
+
+    /**
+     * Get idAnnee
      *
      * @return integer
      */
-    public function getId()
+    public function getIdAnnee()
     {
-        return $this->id;
+        return $this->idAnnee;
     }
 
     /**
      * Set dateDebut
      *
-     * @param \DateTime $dateDebut
+     * @param \Date $dateDebut
      *
      * @return Annee
      */
     public function setDateDebut($dateDebut)
     {
         $this->dateDebut = $dateDebut;
-    
+
         return $this;
     }
 
     /**
      * Get dateDebut
      *
-     * @return \DateTime
+     * @return \Date
      */
     public function getDateDebut()
     {
@@ -65,21 +80,21 @@ class Annee
     /**
      * Set dateFin
      *
-     * @param \DateTime $dateFin
+     * @param \Date $dateFin
      *
      * @return Annee
      */
     public function setDateFin($dateFin)
     {
         $this->dateFin = $dateFin;
-    
+
         return $this;
     }
 
     /**
      * Get dateFin
      *
-     * @return \DateTime
+     * @return \Date
      */
     public function getDateFin()
     {
@@ -96,7 +111,7 @@ class Annee
     public function setIntitule($intitule)
     {
         $this->intitule = $intitule;
-    
+
         return $this;
     }
 
@@ -110,4 +125,3 @@ class Annee
         return $this->intitule;
     }
 }
-
