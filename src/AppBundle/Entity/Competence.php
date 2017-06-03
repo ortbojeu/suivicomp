@@ -10,7 +10,7 @@ class Competence
     /**
      * @var int
      */
-    private $id;
+    private $idCompetence;
 
     /**
      * @var string
@@ -24,13 +24,13 @@ class Competence
 
 
     /**
-     * Get id
+     * Get idComptetence
      *
      * @return integer
      */
-    public function getId()
+    public function getIdCompetence()
     {
-        return $this->id;
+        return $this->idCompetence;
     }
 
     /**

@@ -3,9 +3,10 @@ AppBundle\Entity\Epreuve:
     table: epreuve
     repositoryClass: AppBundle\Repository\EpreuveRepository
     id:
-        id_epreuve:
+        idEpreuve:
             type: integer
             id: true
+            column: id_epreuve
             generator:
                 strategy: AUTO
     fields:

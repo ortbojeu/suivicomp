@@ -3,9 +3,10 @@ AppBundle\Entity\Contact:
     table: contact
     repositoryClass: AppBundle\Repository\ContactRepository
     id:
-        id:
+        idContact:
             type: integer
             id: true
+            column: id
             generator:
                 strategy: AUTO
     fields:
@@ -44,7 +45,4 @@ AppBundle\Entity\Contact:
             length: '10'
             nullable: true
             column: telMobile_contact
-        idContact:
-            type: integer
-            column: id_contact
     lifecycleCallbacks: {  }

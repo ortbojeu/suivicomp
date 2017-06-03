@@ -1,7 +1,7 @@
-AppBundle\Entity\Migration:
+AppBundle\Entity\Migrations:
     type: entity
-    table: migration
-    repositoryClass: AppBundle\Repository\MigrationRepository
+    table: migrations
+    repositoryClass: AppBundle\Repository\MigrationsRepository
     id:
         id:
             type: integer

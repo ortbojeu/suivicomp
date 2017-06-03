@@ -5,9 +5,13 @@ AppBundle\Entity\AutoEvaluer:
     id:
         id:
             type: integer
-            id: true
-            generator:
-                strategy: AUTO
+            column: id
+        idCompetence:
+            type: integer
+            column: id_competence
+        usersId:
+            type: integer
+            column: users_id
     fields:
         dateAutoEval:
             type: datetimetz
@@ -17,12 +21,6 @@ AppBundle\Entity\AutoEvaluer:
             type: integer
             nullable: true
             column: note_autoEval
-        idCompetence:
-            type: integer
-            column: id_competence
-        usersId:
-            type: integer
-            column: users_id
         commentaire:
             type: text
     lifecycleCallbacks: {  }

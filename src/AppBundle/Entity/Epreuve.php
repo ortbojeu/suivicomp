@@ -10,7 +10,7 @@ class Epreuve
     /**
      * @var int
      */
-    private $id;
+    private $idEpreuve;
 
     /**
      * @var \DateTime
@@ -24,13 +24,13 @@ class Epreuve
 
 
     /**
-     * Get id
+     * Get idEpreuve
      *
      * @return integer
      */
-    public function getId()
+    public function getIdEpreuve()
     {
-        return $this->id;
+        return $this->idEpreuve;
     }
 
     /**

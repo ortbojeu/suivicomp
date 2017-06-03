@@ -5,7 +5,7 @@ namespace AppBundle\Entity;
 /**
  * Migration
  */
-class Migration
+class Migrations
 {
     /**
      * @var int
@@ -38,7 +38,7 @@ class Migration
      *
      * @param string $migration
      *
-     * @return Migration
+     * @return Migrations
      */
     public function setMigration($migration)
     {
@@ -62,7 +62,7 @@ class Migration
      *
      * @param integer $batch
      *
-     * @return Migration
+     * @return Migrations
      */
     public function setBatch($batch)
     {

@@ -5,10 +5,6 @@ AppBundle\Entity\Suivre:
     id:
         id:
             type: integer
-            id: true
-            generator:
-                strategy: AUTO
-    fields:
         idGroupe:
             type: integer
             column: id_groupe

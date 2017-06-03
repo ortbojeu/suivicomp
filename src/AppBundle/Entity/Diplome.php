@@ -10,7 +10,7 @@ class Diplome
     /**
      * @var int
      */
-    private $id;
+    private $idDiplome;
 
     /**
      * @var string
@@ -24,13 +24,13 @@ class Diplome
 
 
     /**
-     * Get id
+     * Get idDiplome
      *
      * @return integer
      */
-    public function getId()
+    public function getIdDiplome()
     {
-        return $this->id;
+        return $this->idDiplome;
     }
 
     /**

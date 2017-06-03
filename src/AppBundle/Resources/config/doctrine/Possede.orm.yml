@@ -1,6 +1,6 @@
 AppBundle\Entity\Possede:
     type: entity
-    table: possedde
+    table: possede
     repositoryClass: AppBundle\Repository\PossedeRepository
     id:
         id:

@@ -3,9 +3,10 @@ AppBundle\Entity\Diplome:
     table: diplome
     repositoryClass: AppBundle\Repository\DiplomeRepository
     id:
-        id:
+        idDiplome:
             type: integer
             id: true
+            column: id
             generator:
                 strategy: AUTO
     fields:

@@ -3,9 +3,10 @@ AppBundle\Entity\Competence:
     table: competence
     repositoryClass: AppBundle\Repository\CompetenceRepository
     id:
-        id_competence:
+        idCompetence:
             type: integer
             id: true
+            column: id_competence
             generator:
                 strategy: AUTO
     fields:
