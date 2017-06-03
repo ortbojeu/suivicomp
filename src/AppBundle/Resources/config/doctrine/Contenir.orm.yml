@@ -4,11 +4,7 @@ AppBundle\Entity\Contenir:
     repositoryClass: AppBundle\Repository\ContenirRepository
     id:
         id:
-            type: integer
-            id: true
-            generator:
-                strategy: AUTO
-    fields:
+            type: string
         idEpreuve:
             type: integer
             column: id_epreuve

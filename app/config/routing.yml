@@ -1,3 +1,14 @@
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
+# On paramètre les routes dans ce fichier.
+# Plus d'annotations
+
+accueil:
+    path: /
+    defaults: { _controller: AppBundle:Users:index }
+
+eleve:
+    path: /eleve
+    defaults: { _controller: AppBundle:Eleve:index }
+
+professeur:
+    path: /professeur
+    defaults: { _controller: AppBundle:Prof:index }
