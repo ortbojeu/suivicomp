@@ -6,7 +6,7 @@ AppBundle\Entity\Contact:
         idContact:
             type: integer
             id: true
-            column: id
+            column: id_contact
             generator:
                 strategy: AUTO
     fields:

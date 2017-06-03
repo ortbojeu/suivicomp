@@ -6,7 +6,7 @@ AppBundle\Entity\Diplome:
         idDiplome:
             type: integer
             id: true
-            column: id
+            column: id_diplome
             generator:
                 strategy: AUTO
     fields:

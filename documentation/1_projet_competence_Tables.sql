@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `annee`;
 CREATE TABLE IF NOT EXISTS `annee` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_annee` int(11) NOT NULL AUTO_INCREMENT,
   `date_debut` date NOT NULL,
   `date_fin` date NOT NULL,
   `intitule` varchar(50) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id_annee`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
 -- --------------------------------------------------------
@@ -132,8 +132,8 @@ CREATE TABLE IF NOT EXISTS `contact` (
   `ville_contact` varchar(25) DEFAULT NULL,
   `telFixe_contact` varchar(10) DEFAULT NULL,
   `telMobile_contact` varchar(10) DEFAULT NULL,
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  PRIMARY KEY (`id`)
+  `id_contact` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`id_contact`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
@@ -160,10 +160,10 @@ CREATE TABLE IF NOT EXISTS `contenir` (
 
 DROP TABLE IF EXISTS `diplome`;
 CREATE TABLE IF NOT EXISTS `diplome` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_diplome` int(11) NOT NULL AUTO_INCREMENT,
   `nom_diplome` varchar(25) DEFAULT NULL,
   `niveau_diplome` enum('Bac Professionnel','Bac Général','Bac Technologique','Bac +2','Bac +3','Bac +4','Bac +5') DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id_diplome`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 -- --------------------------------------------------------

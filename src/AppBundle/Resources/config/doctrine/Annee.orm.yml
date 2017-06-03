@@ -6,7 +6,7 @@ AppBundle\Entity\Annee:
         idAnnee:
             type: integer
             id: true
-            column: id
+            column: id_annee
             generator:
                 strategy: AUTO
     fields:
