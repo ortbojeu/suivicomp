@@ -1,0 +1,12 @@
+{% extends 'baseEleve.html.twig' %}
+
+{% block title %} - Eleve auto-évaluation{% endblock %}
+
+{% block page_title %}Auto-évaluation{% endblock %}
+
+{% block main %}
+    <h2>{{ prenom }} {{ nom }}</h2>
+    {{ form_start(formComp) }}
+    {{ form_widget(formComp) }}
+    {{ form_end(formComp) }}
+{% endblock %}

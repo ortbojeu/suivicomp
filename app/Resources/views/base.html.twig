@@ -2,12 +2,15 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>SuiviComp{% block title %}{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
         {% block body %}{% endblock %}
+        <footer>
+            <p>SuiviComp - Thibaut Moiroud & Corentin Faure</p>
+        </footer>
         {% block javascripts %}{% endblock %}
     </body>
 </html>

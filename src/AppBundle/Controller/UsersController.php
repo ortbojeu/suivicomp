@@ -28,7 +28,7 @@ class UsersController extends Controller
 
         if ($form->isSubmitted() && $form->isValid()) {
             $users = $form->getData();
-            $qb->select('u.email, u.password, u.role, u.nom, u.prenom')
+            $qb->select('u.email, u.password, u.role, u.nom, u.prenom, u.id')
                 ->from('AppBundle:Users', 'u')
                 ->where('u.email = ?1')
                 ->setParameter(1, $users->getEmail());
@@ -40,6 +40,7 @@ class UsersController extends Controller
             } else {
                 if (password_verify($users->getPassword(), $result[0]['password'])) {
                     $session = $request->getSession();
+                    $session->set('id', $result[0]['id']);
                     $session->set('email', $result[0]['email']);
                     $session->set('prenom', $result[0]['prenom']);
                     $session->set('nom', $result[0]['nom']);

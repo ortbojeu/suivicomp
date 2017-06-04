@@ -1,0 +1,39 @@
+{% extends 'baseEleve.html.twig' %}
+
+{% block title %} - Accueil élève{% endblock %}
+
+{% block page_title %}Accueil{% endblock %}
+
+{% block main %}
+    {% for competence in groupeComp %}
+        <article>
+            <h3>{{ competence.nomGroupe }}</h3>
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Compétence</th>
+                    <th>Note</th>
+                    <th>Commentaire</th>
+                    <th>Evaluateur</th>
+                </tr>
+                {% for eval in results if eval.nomGroupe == competence.nomGroupe %}
+                    <tr>
+                        <td>{{ eval.date|date("d/m/Y - h:i:s") }}</td>
+                        <td>{{ eval.nomCompetence }}</td>
+                        <td>{{ eval.note }} / 5</td>
+                        {% if eval.commentaire is defined %}
+                            <td><i>{{ eval.commentaire }}</i></td>
+                        {% else %}
+                            <td></td>
+                        {% endif %}
+                        {% if eval.nom is defined %}
+                            <td>{{ eval.nom ~ ' ' ~ eval.prenom }}</td>
+                        {% else %}
+                            <td>Cette compétence est auto-évaluée</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </table>
+        </article>
+    {% endfor %}
+{% endblock %}

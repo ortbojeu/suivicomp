@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <header>
+        <h1>{% block page_title %}{% endblock %}</h1>
+        <h2>{{ prenom }} {{ nom }}</h2>
+        <nav>
+            <ul>
+                <li><a href="{{ path('professeur') }}">Accueil</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        {% block main %}{% endblock %}
+    </main>
+{% endblock %}
