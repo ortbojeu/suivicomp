@@ -1,0 +1,23 @@
+AppBundle\Entity\Diplome:
+    type: entity
+    table: diplome
+    repositoryClass: AppBundle\Repository\DiplomeRepository
+    id:
+        idDiplome:
+            type: integer
+            id: true
+            column: id_diplome
+            generator:
+                strategy: AUTO
+    fields:
+        nomDiplome:
+            type: string
+            length: '25'
+            nullable: true
+            column: nom_diplome
+        niveauDiplome:
+            type: string
+            length: 255
+            nullable: true
+            column: niveau_diplome
+    lifecycleCallbacks: {  }

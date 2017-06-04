@@ -1,0 +1,27 @@
+AppBundle\Entity\LogUsers:
+    type: entity
+    table: log_users
+    repositoryClass: AppBundle\Repository\LogUsersRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        textAction:
+            type: string
+            length: '250'
+            column: text_action
+        action:
+            type: string
+            length: '150'
+        createdAt:
+            type: datetime
+            column: created_at
+        usersId:
+            type: integer
+            column: users_id
+        visibilite:
+            type: integer
+    lifecycleCallbacks: {  }

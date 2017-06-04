@@ -1,0 +1,26 @@
+AppBundle\Entity\AutoEvaluer:
+    type: entity
+    table: auto_evaluer
+    repositoryClass: AppBundle\Repository\AutoEvaluerRepository
+    id:
+        id:
+            type: integer
+            column: id
+        idCompetence:
+            type: integer
+            column: id_competence
+        usersId:
+            type: integer
+            column: users_id
+    fields:
+        dateAutoEval:
+            type: datetimetz
+            nullable: true
+            column: date_autoEval
+        noteAutoEval:
+            type: integer
+            nullable: true
+            column: note_autoEval
+        commentaire:
+            type: text
+    lifecycleCallbacks: {  }

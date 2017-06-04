@@ -1,0 +1,20 @@
+AppBundle\Entity\Epreuve:
+    type: entity
+    table: epreuve
+    repositoryClass: AppBundle\Repository\EpreuveRepository
+    id:
+        idEpreuve:
+            type: integer
+            id: true
+            column: id_epreuve
+            generator:
+                strategy: AUTO
+    fields:
+        dateEpreuve:
+            type: datetimetz
+            nullable: true
+            column: date_epreuve
+        usersId:
+            type: integer
+            column: users_id
+    lifecycleCallbacks: {  }
