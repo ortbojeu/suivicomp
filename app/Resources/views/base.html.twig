@@ -3,14 +3,19 @@
     <head>
         <meta charset="UTF-8" />
         <title>SuiviComp{% block title %}{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        {% block stylesheets %}{% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
         <footer>
             <p>SuiviComp - Thibaut Moiroud & Corentin Faure</p>
         </footer>
-        {% block javascripts %}{% endblock %}
     </body>
+    <script>
+        {% block javascripts %}{% endblock %}
+    </script>
 </html>

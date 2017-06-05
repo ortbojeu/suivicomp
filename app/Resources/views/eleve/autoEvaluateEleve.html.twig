@@ -6,7 +6,30 @@
 
 {% block main %}
     <h2>{{ prenom }} {{ nom }}</h2>
-    {{ form_start(formComp) }}
-    {{ form_widget(formComp) }}
-    {{ form_end(formComp) }}
+    {% if formChoices is defined and formChoices is not empty %}
+        <form method="post" action="{{ path('autoEvalEleve') }}">
+            <div class="accordeon">
+                {% for groupe, competence in formChoices %}
+                    <h3>{{ groupe }}</h3>
+                    <div>
+                        {% for key, value in competence %}
+                            <dl>
+                                <dt><label>{{ key }}<input type="checkbox" name="compToEvaluate_{{ value }}"/></label></dt>
+                                <dd><input type="hidden" name="comp_{{ value }}" value="{{ value }}"/></dd>
+                                <dd>
+                                    <label for="note_{{ value }}">Note : </label>
+                                    <input id="note_{{ value }}" name="note_{{ value }}" type="range" min=1 max=5 step=1 />
+                                </dd>
+                                <dd>
+                                    <label for="comment_{{ value }}">Commentaire : </label>
+                                    <textarea id="comment_{{ value }}" name="comment_{{ value }}" cols="30" rows="3"></textarea>
+                                </dd>
+                            </dl>
+                        {% endfor %}
+                    </div>
+                {% endfor %}
+            </div>
+            <input type="submit" value="Evaluer"/>
+        </form>
+    {% endif %}
 {% endblock %}

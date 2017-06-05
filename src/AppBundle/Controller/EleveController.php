@@ -4,11 +4,9 @@ namespace AppBundle\Controller;
 
 use AppBundle\Tools\ArrayTools;
 use AppBundle\Entity\AutoEvaluer;
+use Psr\Log\LoggerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
-use Symfony\Component\Form\Extension\Core\Type\HiddenType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 
 class EleveController extends Controller
@@ -73,8 +71,11 @@ class EleveController extends Controller
     public function autoEvaluateAction(Request $request)
     {
         $session = $request->getSession();
+        if ($session->get('email') == null)
+            return $this->redirectToRoute('accueil');
 
-        $qbComp = $this->getDoctrine()->getManager()->createQueryBuilder();
+        $em = $this->getDoctrine()->getManager();
+        $qbComp = $em->createQueryBuilder();
         $qbComp->select('c.idCompetence, c.nomCompetence, g.nomGroupe')
             ->from('AppBundle:GroupeCompetence', 'g')
             ->innerJoin('AppBundle:Competence', 'c', 'WITH', 'c.idGroupeCompetence = g.idGroupeCompetence');
@@ -83,30 +84,24 @@ class EleveController extends Controller
 
         $formChoices = [];
         foreach ($resultComp as $comp) {
-            if (array_key_exists($comp['nomGroupe'], $formChoices)) {
-                $formChoices[$comp['nomGroupe']][$comp['nomCompetence']] = $comp['idCompetence'];
-            } else {
-                $formChoices[$comp['nomGroupe']] = array();
-            }
+            $formChoices[$comp['nomGroupe']][$comp['nomCompetence']] = $comp['idCompetence'];
         }
 
-        $autoEval = new AutoEvaluer();
-        var_dump($autoEval);
-        $form = $this->createFormBuilder($autoEval)
-            ->add('idCompetence', ChoiceType::class, [
-                'required' => true,
-                'multiple' => true,
-                'choices' => $formChoices,
-                'label' => 'Compétence(s)',
-            ])
-            ->add('usersId', HiddenType::class, [
-                'value' => $session->get('id'),
-                'required' => true,
-            ])
-            ->add('submit', SubmitType::class, ['label' => 'Continuer'])
-            ->getForm();
-
-        if ($form->isSubmitted()) {
+        if ($request->getMethod() == 'POST') {
+            $form = $request->request->all();
+            $autoEvaluateArray = $this->_getAEFromForm($form, count($formChoices), $session->get('id'));
+            foreach ($autoEvaluateArray as $autoEval) {
+                $em->getConnection()->beginTransaction();
+                try {
+                    $em->persist($autoEval);
+                    $em->flush();
+                    $em->getConnection()->commit();
+                } catch (Exception $e) {
+                    $em->getConnection()->rollBack();
+                    $this->get('logger')->error(sprintf('An error occurred : $s - [%s]', $e->getCode(), $e->getMessage()));
+                }
+            }
+            $session->getFlashBag()->add('success', 'Auto-évaluation terminée avec succès!');
             return $this->redirectToRoute('eleve');
         }
 
@@ -114,7 +109,26 @@ class EleveController extends Controller
             'base_dir' => realpath($this->getParameter('kernel.root_dir').'/..').DIRECTORY_SEPARATOR,
             'nom' => $session->get('nom'),
             'prenom' => $session->get('prenom'),
-            'formComp' => $form->createView()
+            'formChoices' => $formChoices,
         ]);
+    }
+
+    private function _getAEFromForm($params, $lenComps, $usersId) {
+        $arrayAE = array();
+        $today = new \DateTime("now");
+        for ($i = 1; $i <= $lenComps; $i++) {
+            if (array_key_exists(sprintf('compToEvaluate_%d', $i), $params)) {
+                $autoEval = new AutoEvaluer();
+                $comment = (array_key_exists(sprintf('comment_%d', $i), $params)) ? $params[sprintf('comment_%d', $i)] : '';
+                $note = $params[sprintf('note_%d', $i)];
+                $autoEval->setIdCompetence($i);
+                $autoEval->setUsersId($usersId);
+                $autoEval->setCommentaire($comment);
+                $autoEval->setDateAutoEval($today);
+                $autoEval->setNoteAutoEval($note);
+                $arrayAE[] = $autoEval;
+            }
+        }
+        return $arrayAE;
     }
 }
