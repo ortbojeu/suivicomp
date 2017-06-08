@@ -2,34 +2,41 @@
 
 {% block title %} - Eleve auto-évaluation{% endblock %}
 
-{% block page_title %}Auto-évaluation{% endblock %}
-
 {% block main %}
-    <h2>{{ prenom }} {{ nom }}</h2>
     {% if formChoices is defined and formChoices is not empty %}
+        <h3>Auto-évaluation de compétence(s)</h3>
+        <hr class="colorgraph"><br>
         <form method="post" action="{{ path('autoEvalEleve') }}">
             <div class="accordeon">
                 {% for groupe, competence in formChoices %}
                     <h3>{{ groupe }}</h3>
-                    <div>
+                    <div class="accordeon">
                         {% for key, value in competence %}
-                            <dl>
-                                <dt><label>{{ key }}<input type="checkbox" name="compToEvaluate_{{ value }}"/></label></dt>
-                                <dd><input type="hidden" name="comp_{{ value }}" value="{{ value }}"/></dd>
-                                <dd>
-                                    <label for="note_{{ value }}">Note : </label>
-                                    <input id="note_{{ value }}" name="note_{{ value }}" type="range" min=1 max=5 step=1 />
-                                </dd>
-                                <dd>
-                                    <label for="comment_{{ value }}">Commentaire : </label>
-                                    <textarea id="comment_{{ value }}" name="comment_{{ value }}" cols="30" rows="3"></textarea>
-                                </dd>
-                            </dl>
+                            <h4>{{ key }}</h4>
+                            <div class="form-inline">
+                                <input type="hidden" name="comp_{{ value }}" value="{{ value }}"/>
+                                <div class="form-group col-xs-4">
+                                    <label for="compToEvaluate_{{ value }}">Evaluer cette compétence?</label>
+                                    <input id="compToEvaluate_{{ value }}" type="checkbox" name="compToEvaluate_{{ value }}" />
+                                </div>
+
+                                <div class="form-group col-xs-4">
+                                    <div class="range range-info">
+                                        <label for="note_{{ value }}">Note</label>
+                                        <input id="note_{{ value }}" name="note_{{ value }}" type="range" min=1 max=5 step=1 />
+                                    </div>
+                                </div>
+
+                                <div class="form-group col-xs-4">
+                                    <label class="sr-only" for="comment_{{ value }}">Commentaire</label>
+                                    <textarea id="comment_{{ value }}" name="comment_{{ value }}" cols="40" rows="3" placeholder="Commentaire"></textarea>
+                                </div>
+                            </div>
                         {% endfor %}
                     </div>
                 {% endfor %}
             </div>
-            <input type="submit" value="Evaluer"/>
+            <input class="btn btn-default btn-lg" type="submit" value="Evaluer"/>
         </form>
     {% endif %}
 {% endblock %}

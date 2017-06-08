@@ -1,0 +1,85 @@
+html {
+    margin: 0;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+ul {
+    list-style: none;
+}
+
+main {
+    text-align: center;
+    margin: 1.5%;
+}
+
+/**
+ * Header Style
+ */
+header {
+    margin: 5% 0;
+}
+
+/**
+ * Footer Styles
+ */
+footer {
+    position: fixed;
+    height: 20px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 1em 0 3.5em;
+    margin: 0 4em;
+    text-align: center;
+    font-size: 80%;
+    border-top: 2px solid #c8c8c8;
+    background-color: white;
+}
+
+/**
+ * Style des alertes
+ */
+div.alert {
+    position: fixed;
+    right: 0;
+    top: 0;
+    margin: 20px;
+    width: 300px;
+}
+
+/**
+ * Style des accordéons
+ */
+.accordeon h3 {
+    height: 45px;
+}
+
+.accordeon table th {
+    text-align: center;
+}
+
+.accordeon table td {
+    text-align: left;
+}
+
+/**
+ * Inputs
+ */
+main input[type="submit"] {
+    margin: 10px;
+}
+
+/**
+ * Bande de couleur sympa
+ */
+.colorgraph {
+    height: 7px;
+    border-top: 0;
+    background: #c4e17f;
+    border-radius: 5px;
+    background-image: -webkit-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -moz-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: -o-linear-gradient(left, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+    background-image: linear-gradient(to right, #c4e17f, #c4e17f 12.5%, #f7fdca 12.5%, #f7fdca 25%, #fecf71 25%, #fecf71 37.5%, #f0776c 37.5%, #f0776c 50%, #db9dbe 50%, #db9dbe 62.5%, #c49cde 62.5%, #c49cde 75%, #669ae1 75%, #669ae1 87.5%, #62c2e4 87.5%, #62c2e4);
+}

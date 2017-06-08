@@ -5,6 +5,10 @@ accueil:
     path: /
     defaults: { _controller: AppBundle:Users:index }
 
+deconnexion:
+    path: /deconnexion
+    defaults: { _controller: AppBundle:Users:disconnect }
+
 eleve:
     path: /eleve
     defaults: { _controller: AppBundle:Eleve:index }

@@ -4,8 +4,6 @@ namespace AppBundle\Controller;
 
 use AppBundle\Tools\ArrayTools;
 use AppBundle\Entity\AutoEvaluer;
-use Psr\Log\LoggerInterface;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -14,12 +12,20 @@ class EleveController extends Controller
     public function indexAction(Request $request)
     {
         $session = $request->getSession();
-        if ($session->get('email') == null)
+        if (!$session->has('email')) {
+            $session->getFlashBag()->add('danger', "Vous devez vous connecter avant d'accéder à cette page.");
             return $this->redirectToRoute('accueil');
+        }
+        if ($session->get('role') != 'eleve') {
+            $session->getFlashBag()->add('danger', "Votre statut ne vous autorise pas à accéder à cette page.");
+            return $this->redirectToRoute('accueil');
+        }
 
         $qbGroupeComp = $this->getDoctrine()->getManager()->createQueryBuilder();
         $qbGroupeComp->select('g.nomGroupe')
-            ->from('AppBundle:GroupeCompetence', 'g');
+            ->from('AppBundle:GroupeCompetence', 'g')
+            ->innerJoin('AppBundle:Competence', 'c', 'WITH', 'g.idGroupeCompetence = c.idGroupeCompetence')
+            ->distinct();
         $queryGroupeComp = $qbGroupeComp->getQuery();
         $resultGroupeComp = $queryGroupeComp->getResult();
 
@@ -71,8 +77,14 @@ class EleveController extends Controller
     public function autoEvaluateAction(Request $request)
     {
         $session = $request->getSession();
-        if ($session->get('email') == null)
+        if (!$session->has('email')) {
+            $session->getFlashBag()->add('danger', "Vous devez vous connecter avant d'accéder à cette page.");
             return $this->redirectToRoute('accueil');
+        }
+        if ($session->get('role') != 'eleve') {
+            $session->getFlashBag()->add('danger', "Votre statut ne vous autorise pas à accéder à cette page.");
+            return $this->redirectToRoute('accueil');
+        }
 
         $em = $this->getDoctrine()->getManager();
         $qbComp = $em->createQueryBuilder();
@@ -89,7 +101,7 @@ class EleveController extends Controller
 
         if ($request->getMethod() == 'POST') {
             $form = $request->request->all();
-            $autoEvaluateArray = $this->_getAEFromForm($form, count($formChoices), $session->get('id'));
+            $autoEvaluateArray = $this->_getAEFromForm($form, count($resultComp), $session->get('id'));
             foreach ($autoEvaluateArray as $autoEval) {
                 $em->getConnection()->beginTransaction();
                 try {
@@ -101,7 +113,10 @@ class EleveController extends Controller
                     $this->get('logger')->error(sprintf('An error occurred : $s - [%s]', $e->getCode(), $e->getMessage()));
                 }
             }
-            $session->getFlashBag()->add('success', 'Auto-évaluation terminée avec succès!');
+            if (count($autoEvaluateArray) > 0)
+                $session->getFlashBag()->add('success', 'Auto-évaluation terminée avec succès!');
+            else
+                $session->getFlashBag()->add('warning', "Aucune compétence n'a été évaluée.");
             return $this->redirectToRoute('eleve');
         }
 
@@ -117,13 +132,13 @@ class EleveController extends Controller
         $arrayAE = array();
         $today = new \DateTime("now");
         for ($i = 1; $i <= $lenComps; $i++) {
-            if (array_key_exists(sprintf('compToEvaluate_%d', $i), $params)) {
+            if (array_key_exists(sprintf('compToEvaluate_%d', $i), $params) && $params[sprintf('compToEvaluate_%d', $i)] == 'on') {
                 $autoEval = new AutoEvaluer();
                 $comment = (array_key_exists(sprintf('comment_%d', $i), $params)) ? $params[sprintf('comment_%d', $i)] : '';
                 $note = $params[sprintf('note_%d', $i)];
                 $autoEval->setIdCompetence($i);
                 $autoEval->setUsersId($usersId);
-                $autoEval->setCommentaire($comment);
+                $autoEval->setCommentaire(filter_var( $comment, FILTER_SANITIZE_STRING));
                 $autoEval->setDateAutoEval($today);
                 $autoEval->setNoteAutoEval($note);
                 $arrayAE[] = $autoEval;

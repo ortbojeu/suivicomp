@@ -1,16 +1,25 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/professeur.css') }}" />
+{% endblock %}
+
+{% block menu %}
+    <nav>
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="{{ path('professeur') }}">Accueil</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
 {% block body %}
-    <header>
-        <h1>{% block page_title %}{% endblock %}</h1>
-        <h2>{{ prenom }} {{ nom }}</h2>
-        <nav>
-            <ul>
-                <li><a href="{{ path('professeur') }}">Accueil</a></li>
-            </ul>
-        </nav>
-    </header>
     <main>
         {% block main %}{% endblock %}
+        <footer>
+            <p>
+                SuiviComp - Thibaut Moiroud & Corentin Faure<br>
+                Suivez l'avancée de vos élèves et permettez leur de s'améliorer!
+            </p>
+        </footer>
     </main>
 {% endblock %}

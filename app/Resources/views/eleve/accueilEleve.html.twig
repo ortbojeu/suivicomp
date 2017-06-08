@@ -2,14 +2,14 @@
 
 {% block title %} - Accueil élève{% endblock %}
 
-{% block page_title %}Accueil{% endblock %}
-
 {% block main %}
+    <h3>Evaluation par date décroissante</h3>
+    <hr class="colorgraph"><br>
     <div class="accordeon">
         {% for competence in groupeComp %}
             <h3>{{ competence.nomGroupe }}</h3>
             <div>
-                <table>
+                <table class="table">
                     <tr>
                         <th>Date</th>
                         <th>Compétence</th>
@@ -23,7 +23,7 @@
                             <td>{{ eval.nomCompetence }}</td>
                             <td>{{ eval.note }} / 5</td>
                             {% if eval.commentaire is defined %}
-                                <td><i>{{ eval.commentaire }}</i></td>
+                                <td><i>{{ eval.commentaire|length > 30 ? eval.commentaire|slice(0, 50) ~ '...' : eval.commentaire }}</i></td>
                             {% else %}
                                 <td></td>
                             {% endif %}

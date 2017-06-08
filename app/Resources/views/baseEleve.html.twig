@@ -1,34 +1,26 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/eleve.css') }}" />
+{% endblock %}
+
+{% block menu %}
+    <nav>
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="{{ path('eleve') }}">Accueil</a></li>
+            <li><a href="{{ path('autoEvalEleve') }}">Auto-évaluation</a></li>
+        </ul>
+    </nav>
+{% endblock %}
+
 {% block body %}
-    <header>
-        <h1>{% block page_title %}{% endblock %}</h1>
-        <h2>{{ prenom }} {{ nom }}</h2>
-        <nav>
-            <ul>
-                <li><a href="{{ path('eleve') }}">Accueil</a></li>
-                <li><a href="{{ path('autoEvalEleve') }}">Auto-évaluation</a></li>
-            </ul>
-        </nav>
-        {% if app.session.flashBag.has('success') %}
-            <div>
-                {% for msg in app.session.flashBag.get('success') %}
-                    {{ msg }}
-                {% endfor %}
-            </div>
-        {% endif %}
-    </header>
     <main>
         {% block main %}{% endblock %}
     </main>
-{% endblock %}
-
-{% block javascripts %}
-    $( function() {
-        $( ".accordeon" ).accordion({
-            collapsible: true,
-            active: false,
-            heightStyle: 'content'
-        });
-    } );
+    <footer>
+        <p>
+            SuiviComp - Thibaut Moiroud & Corentin Faure<br>
+            Suivez votre avancé et évaluez vos compétences avec efficacité!
+        </p>
+    </footer>
 {% endblock %}
