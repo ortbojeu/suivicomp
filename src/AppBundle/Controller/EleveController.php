@@ -102,6 +102,7 @@ class EleveController extends Controller
         if ($request->getMethod() == 'POST') {
             $form = $request->request->all();
             $autoEvaluateArray = $this->_getAEFromForm($form, count($resultComp), $session->get('id'));
+
             foreach ($autoEvaluateArray as $autoEval) {
                 $em->getConnection()->beginTransaction();
                 try {
@@ -114,7 +115,7 @@ class EleveController extends Controller
                 }
             }
             if (count($autoEvaluateArray) > 0)
-                $session->getFlashBag()->add('success', 'Auto-évaluation terminée avec succès!');
+                $session->getFlashBag()->add('success', sprintf('%d compétence(s) ont/a été auto-évaluée(s)!', count($autoEvaluateArray)));
             else
                 $session->getFlashBag()->add('warning', "Aucune compétence n'a été évaluée.");
             return $this->redirectToRoute('eleve');
