@@ -5,7 +5,7 @@ DROP INDEX FK_appeller_id_contact ON appeller;
 DROP INDEX fk_appeller_users1_idx ON appeller;
 DROP INDEX fk_auto_evaluer_users1_idx ON auto_evaluer;
 DROP INDEX FK_auto_evaluer_id_competence ON auto_evaluer;
-ALTER TABLE auto_evaluer CHANGE id id INT NOT NULL, CHANGE date_autoEval date_autoEval DATETIME DEFAULT NULL;
+ALTER TABLE auto_evaluer CHANGE date_autoEval date_autoEval DATETIME DEFAULT NULL;
 DROP INDEX FK_commentaire_competence_id_competence ON commentaire_competence;
 DROP INDEX FK_competence_id_groupeCompetence ON competence;
 DROP INDEX FK_contenir_id_competence ON contenir;

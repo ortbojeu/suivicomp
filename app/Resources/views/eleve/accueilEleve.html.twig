@@ -1,0 +1,46 @@
+{% extends 'baseEleve.html.twig' %}
+
+{% block title %} - Accueil élève{% endblock %}
+
+{% block main %}
+    <h3>Evaluation par date décroissante</h3>
+    <hr class="colorgraph"><br>
+    <div class="accordeon">
+        {% for competence in groupeComp %}
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    {{ competence.nomGroupe }}
+                    <i class="fa fa-expand" aria-hidden="true"></i>
+                </h4>
+            </div>
+            <div class="accordion_content">
+                <table class="table">
+                    <tr>
+                        <th>Date</th>
+                        <th>Compétence</th>
+                        <th>Note</th>
+                        <th>Commentaire</th>
+                        <th>Evaluateur</th>
+                    </tr>
+                    {% for eval in results if eval.nomGroupe == competence.nomGroupe %}
+                        <tr>
+                            <td>{{ eval.date|date("d/m/Y - h:i:s") }}</td>
+                            <td>{{ eval.nomCompetence }}</td>
+                            <td>{{ eval.note }} / 5</td>
+                            {% if eval.commentaire is defined %}
+                                <td><i>{{ eval.commentaire|length > 30 ? eval.commentaire|slice(0, 50) ~ '...' : eval.commentaire }}</i></td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+                            {% if eval.nom is defined %}
+                                <td>{{ eval.nom ~ ' ' ~ eval.prenom }}</td>
+                            {% else %}
+                                <td>Cette compétence est auto-évaluée</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

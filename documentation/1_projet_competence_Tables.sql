@@ -82,7 +82,7 @@ CREATE TABLE IF NOT EXISTS `auto_evaluer` (
   `id_competence` int(11) NOT NULL,
   `users_id` int(10) NOT NULL,
   `commentaire` text NOT NULL,
-  PRIMARY KEY (`id`,`id_competence`,`users_id`),
+  PRIMARY KEY (`id`),
   KEY `fk_auto_evaluer_users1_idx` (`users_id`),
   KEY `FK_auto_evaluer_id_competence` (`id_competence`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=148 ;

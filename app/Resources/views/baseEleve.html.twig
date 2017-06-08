@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/eleve.css') }}" />
+{% endblock %}
+
+{% block menu %}
+    <nav>
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="{{ path('eleve') }}">Accueil</a></li>
+            <li><a href="{{ path('autoEvalEleve') }}">Auto-évaluation</a></li>
+        </ul>
+    </nav>
+{% endblock %}

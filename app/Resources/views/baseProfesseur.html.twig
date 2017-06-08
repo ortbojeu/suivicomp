@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ asset('css/professeur.css') }}" />
+{% endblock %}
+
+{% block menu %}
+    <nav>
+        <ul class="nav nav-pills nav-stacked">
+            <li><a href="{{ path('professeur') }}">Accueil</a></li>
+        </ul>
+    </nav>
+{% endblock %}

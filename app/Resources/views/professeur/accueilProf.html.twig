@@ -1,0 +1,77 @@
+{% extends 'baseProfesseur.html.twig' %}
+
+{% block title %} - Accueil professeur{% endblock %}
+
+{% block main %}
+    <div class="container-fluid">
+        <div class="row">
+            <h3>Ajout de compétence</h3>
+            <hr class="colorgraph"><br>
+            {{ form_start(compForm, { 'attr' : { 'class': 'form-horizontal' } }) }}
+                <div class="form-group">
+                    {{ form_label(compForm.nomCompetence, 'Compétence', { 'label_attr': { 'class': 'col-md-4 control-label' } }) }}
+                    <div class="col-md-5">
+                        {{ form_widget(compForm.nomCompetence, { 'attr': {'class': 'form-control input-md'} }) }}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{ form_label(compForm.idGroupeCompetence, 'Groupe de compétence', { 'label_attr': { 'class': 'col-md-4 control-label' } }) }}
+                    <div class="col-md-5">
+                        {{ form_widget(compForm.idGroupeCompetence, { 'attr': {'class': 'form-control'} }) }}
+                    </div>
+                </div>
+
+                <div class="form-group submit">
+                    {{ form_widget(compForm.submit, { 'attr': {'class': 'btn btn-default btn-md'} }) }}
+                </div>
+            {{ form_end(compForm) }}
+        </div>
+        {% if evals is not empty %}
+            <div class="row">
+                <h3>Evaluation par élève</h3>
+                <hr class="colorgraph"><br>
+                <div class="accordeon">
+                    {% for eleve in evals %}
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                {{ eleve.nom ~ ' ' ~ eleve.prenom }}
+                                <i class="fa fa-expand" aria-hidden="true"></i>
+                            </h4>
+                        </div>
+                        <div class="accordion_content accordeon">
+                            {% for idGC, groupeC in eleve.groupesC %}
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        {{ groupeC.nomGC }}
+                                        <i class="fa fa-expand" aria-hidden="true"></i>
+                                    </h4>
+                                </div>
+                                <div class="accordion_content">
+                                    <table class="table">
+                                        <tr>
+                                            <th>Date</th>
+                                            <th>Compétence</th>
+                                            <th>Note</th>
+                                            <th>Commentaire</th>
+                                        </tr>
+                                        {% for idC, comp in groupeC.comps %}
+                                            {% for idEval, evalComp in comp.evalsComp %}
+                                                <tr>
+                                                    <td>{{ evalComp.date|date("d/m/Y - h:i:s") }}</td>
+                                                    <td>{{ comp.nomC }}</td>
+                                                    <td>{{ evalComp.note }} / 5</td>
+                                                    <td>{{ evalComp.commentaire|length > 50 ? evalComp.commentaire|slice(0, 50) ~ '...' : evalComp.commentaire }}</td>
+                                                </tr>
+                                            {% endfor %}
+                                        {% endfor %}
+                                    </table>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

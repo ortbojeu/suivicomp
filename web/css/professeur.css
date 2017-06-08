@@ -1,0 +1,14 @@
+form {
+    text-align: right;
+}
+
+legend, form .submit {
+    text-align: center;
+}
+
+/**
+ * Inputs
+ */
+main input[type="submit"] {
+    margin: 10px;
+}

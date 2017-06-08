@@ -2,12 +2,109 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>SuiviComp{% block title %}{% endblock %}</title>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- JQueryUI JQuery + CSS -->
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+        <!-- AwesomeFont -->
+        <link rel="stylesheet" href="{{ asset('css/font-awesome/css/font-awesome.min.css') }}">
+        <!-- CSS -->
+        <link rel="stylesheet" href="{{ asset('css/normalize.css') }}" />
+        <link rel="stylesheet" href="{{ asset('css/main.css') }}" />
+        {% block stylesheets %}{% endblock %}
     </head>
-    <body>
-        {% block body %}{% endblock %}
+    {% set flashbag = app.session.flashBag.all %}
+    {% if flashbag is not empty %}
+        <div class="messages-container">
+            {% for tag, line in flashbag %}
+                {% for underline in line %}
+                    <div class="alert alert-{{tag}}">{{ underline }}</div>
+                {% endfor %}
+            {% endfor %}
+        </div>
+    {% endif %}
+    {% if app.session.has('email') %}
+        <body>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-3">
+                        <header>
+                            <!-- It can be fixed with bootstrap affix http://getbootstrap.com/javascript/#affix-->
+                            <div id="sidebar" class="well sidebar-nav">
+                                <h3>
+                                    <a href="{{ path('accueil') }}">SuiviComp</a>
+                                </h3>
+                                <h4><i class="glyphicon glyphicon-home"></i>
+                                    <b>MENU</b>
+                                </h4>
+                                {% block menu %}{% endblock %}
+                                <h4><i class="glyphicon glyphicon-user"></i>
+                                    <b>{{ app.session.get('nom') }} {{ app.session.get('prenom') }}</b>
+                                </h4>
+                                <ul class="nav nav-pills nav-stacked">
+                                    <li><a href="{{ path('deconnexion') }}">Déconnexion</a></li>
+                                </ul>
+                                <p><small>SuiviComp - Thibaut Moiroud & Corentin Faure</small></p>
+                            </div>
+                        </header>
+                    </div>
+                    <div class="col-md-9">
+                        <main>
+                            {% block main %}{% endblock %}
+                        </main>
+                    </div>
+                </div>
+            </div>
+        </body>
+    {% else %}
+        <body>
+            {% block body_cnx %}{% endblock %}
+        </body>
+    {% endif %}
+    <script>
+        var allAlert = document.querySelectorAll('div.alert');
+        allAlert.forEach(function (alert) {
+            fade(alert);
+        });
+        function fade(element) {
+            var op = 1;  // initial opacity
+            var timer = setInterval(function () {
+                if (op <= 0.1){
+                    clearInterval(timer);
+                    element.style.display = 'none';
+                }
+                element.style.opacity = op;
+                element.style.filter = 'alpha(opacity=' + op * 100 + ")";
+                op -= op * 0.1;
+            }, 300);
+        }
+        $( function() {
+            $( ".accordeon" ).accordion({
+                collapsible: true,
+                active: false,
+                heightStyle: 'content',
+                icons: false
+            });
+        });
+        $('.accordeon .panel-heading').click(function() {
+            $(this).toggleClass('active').find('i').toggleClass('fa-expand fa-compress')
+                .closest('.panel-heading').siblings('.panel-heading')
+                .removeClass('active').find('i')
+                .removeClass('fa-compress').addClass('fa-expand');
+            if ($(this).hasClass('active')) {
+                $(this).next('.accordion_content').slideUp("slow");
+            }
+            else {
+                $(this).next('.accordion_content').slideToggle("slow").siblings('.accordion_content').slideUp("slow");
+            }
+        });
         {% block javascripts %}{% endblock %}
-    </body>
+    </script>
 </html>

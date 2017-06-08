@@ -6,13 +6,16 @@ AppBundle\Entity\AutoEvaluer:
         id:
             type: integer
             column: id
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
         idCompetence:
             type: integer
             column: id_competence
         usersId:
             type: integer
             column: users_id
-    fields:
         dateAutoEval:
             type: datetimetz
             nullable: true
