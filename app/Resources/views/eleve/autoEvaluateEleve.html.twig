@@ -9,27 +9,39 @@
         <form method="post" action="{{ path('autoEvalEleve') }}">
             <div class="accordeon">
                 {% for groupe, competence in formChoices %}
-                    <h3>{{ groupe }}</h3>
-                    <div class="accordeon">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            {{ groupe }}
+                            <i class="fa fa-expand" aria-hidden="true"></i>
+                        </h4>
+                    </div>
+                    <div class="accordion_content accordeon">
                         {% for key, value in competence %}
-                            <h4>{{ key }}</h4>
-                            <div class="form-inline">
-                                <input type="hidden" name="comp_{{ value }}" value="{{ value }}"/>
-                                <div class="form-group col-xs-4">
-                                    <label for="compToEvaluate_{{ value }}">Evaluer cette compétence?</label>
-                                    <input id="compToEvaluate_{{ value }}" type="checkbox" name="compToEvaluate_{{ value }}" />
-                                </div>
-
-                                <div class="form-group col-xs-4">
-                                    <div class="range range-info">
-                                        <label for="note_{{ value }}">Note</label>
-                                        <input id="note_{{ value }}" name="note_{{ value }}" type="range" min=1 max=5 step=1 />
+                            <div class="panel-heading">
+                                <h4 class="panel-title">
+                                    {{ key }}
+                                    <i class="fa fa-expand" aria-hidden="true"></i>
+                                </h4>
+                            </div>
+                            <div class="accordion_content">
+                                <div class="form-inline">
+                                    <input type="hidden" name="comp_{{ value }}" value="{{ value }}"/>
+                                    <div class="form-group col-xs-4">
+                                        <label for="compToEvaluate_{{ value }}">Evaluer cette compétence?</label>
+                                        <input id="compToEvaluate_{{ value }}" type="checkbox" name="compToEvaluate_{{ value }}" />
                                     </div>
-                                </div>
 
-                                <div class="form-group col-xs-4">
-                                    <label class="sr-only" for="comment_{{ value }}">Commentaire</label>
-                                    <textarea id="comment_{{ value }}" name="comment_{{ value }}" cols="40" rows="3" placeholder="Commentaire"></textarea>
+                                    <div class="form-group col-xs-4">
+                                        <div class="range range-info">
+                                            <label for="note_{{ value }}">Note</label>
+                                            <input id="note_{{ value }}" name="note_{{ value }}" type="range" min=1 max=5 step=1 />
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group col-xs-4">
+                                        <label class="sr-only" for="comment_{{ value }}">Commentaire</label>
+                                        <textarea id="comment_{{ value }}" name="comment_{{ value }}" cols="40" rows="3" placeholder="Commentaire"></textarea>
+                                    </div>
                                 </div>
                             </div>
                         {% endfor %}

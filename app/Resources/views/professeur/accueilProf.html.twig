@@ -33,11 +33,21 @@
                 <hr class="colorgraph"><br>
                 <div class="accordeon">
                     {% for eleve in evals %}
-                        <h3>{{ eleve.nom ~ ' ' ~ eleve.prenom }}</h3>
-                        <div class="accordeon">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">
+                                {{ eleve.nom ~ ' ' ~ eleve.prenom }}
+                                <i class="fa fa-expand" aria-hidden="true"></i>
+                            </h4>
+                        </div>
+                        <div class="accordion_content accordeon">
                             {% for idGC, groupeC in eleve.groupesC %}
-                                <h4>{{ groupeC.nomGC }}</h4>
-                                <div>
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">
+                                        {{ groupeC.nomGC }}
+                                        <i class="fa fa-expand" aria-hidden="true"></i>
+                                    </h4>
+                                </div>
+                                <div class="accordion_content">
                                     <table class="table">
                                         <tr>
                                             <th>Date</th>

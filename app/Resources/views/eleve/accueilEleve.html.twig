@@ -7,8 +7,13 @@
     <hr class="colorgraph"><br>
     <div class="accordeon">
         {% for competence in groupeComp %}
-            <h3>{{ competence.nomGroupe }}</h3>
-            <div>
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    {{ competence.nomGroupe }}
+                    <i class="fa fa-expand" aria-hidden="true"></i>
+                </h4>
+            </div>
+            <div class="accordion_content">
                 <table class="table">
                     <tr>
                         <th>Date</th>
