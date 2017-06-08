@@ -1,10 +1,11 @@
-﻿# SuiviComp
+
+# SuiviComp
 Application de suivi de compétence pour des enseignants et étudiants.
 
 ## Déploiement
 * /!\ Le projet doit être déployer dans une solution WAMP.
-* Récupérer l'archive suivicomp_v1.zip et la dézipper dans le répertoire /www.
-* Ajouter un vhost pour ce projet:
+* Récupérer l'archive suivicomp_vX.zip et la dézipper dans le répertoire /www.
+* Ajouter un vhost pour ce projet: /!\ le répertoire cible du vhost est le /web
 	** dans le fichier apache/{version}/conf/extra/httpd-vhosts.conf ajouter le vhost.
 	** dans le fichier C:\Windows\System32\drivers\etc\hosts ajouter l'ip et le nom du vhost.
 
